@@ -8,5 +8,5 @@
  */
 
 /* ---- API ---- */
-int bin_search(int*, int, int);     // Binary search for number in array
-int seq_search(int*, int, int);        // Sequential search for number in array
+int bin_search(long*, long, int);     // Binary search for number in array
+int seq_search(long*, long, int);        // Sequential search for number in array

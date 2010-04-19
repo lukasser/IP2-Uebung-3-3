@@ -8,4 +8,17 @@
  */
 
 #include "timing.h"
+#include <sys/time.h>
 
+/* get_time: set variable to current time in s
+ * 
+ * Args: None
+ * Returns: current UNIX time in s
+ */
+double
+get_time(void)
+{
+    timeval now;
+    gettimeofday(&now, NULL);
+    return now.tv_sec + now.tv_usec/1000000.0;
+}
