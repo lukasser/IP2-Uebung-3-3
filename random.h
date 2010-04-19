@@ -9,4 +9,4 @@
 
 /* ---- API ---- */
 void init_rand();   // Initialize random number generator
-long get_rand(int); // Return new random number
+int  get_rand(int); // Return new random number
