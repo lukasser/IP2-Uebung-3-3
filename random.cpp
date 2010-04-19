@@ -8,4 +8,37 @@
  */
 
 #include "random.h"
+#include <stdlib.h>
+#include <sys/time.h>
+#include <limits.h>
 
+/* init_rand: Initialize the random number generator
+ * 
+ * Arguments: None
+ * Returns: Nothing
+ * from http://eternallyconfuzzled.com/arts/jsw_art_rand.aspx
+ */
+void
+init_rand(void)
+{
+    time_t now = time(NULL);
+    unsigned char *p = (unsigned char *)&now;
+    unsigned seed = 0;
+    size_t i;
+    
+    for (i=0; i<sizeof now; i++)
+        seed = seed * (UCHAR_MAX + 2U) + p[i];
+    
+    srandom(seed);
+}
+
+/* get_rand: Return new random number
+ *
+ * Arguments: None
+ * Returns: random number
+ */
+long
+get_rand(void)
+{
+    return random();
+}
