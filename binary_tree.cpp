@@ -67,9 +67,8 @@ insert(tree *tree, long number)
 void
 insert_rands(tree *tree, int num)
 {
-    int random_num;
     init_rand();
-    
+    int random_num;
     for (int i=0; i<num; i++) {
         random_num = get_rand()%num; // get new random number and cast out num
         insert(tree, random_num);

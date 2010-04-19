@@ -13,38 +13,29 @@
 
 using namespace std;
 
-void search_number(tree*, int);
+void search_number(tree*, long*, int);
 
 int 
 main(void)
 {
+    int num_rands = 10000;
+    
     tree *nums = new tree;
-    int num_rands = 100000;
-    const int max = 1000000;
+    long *arr = new long[num_rands]; // array for searching
+    
     char choice;
     
     /*  Main Menu loop */
     do {
-        cout << "\n----- Menu -----\n"
-        << "\t(a) Anzahl von zufaelligen Zahlen eingeben (Default: 100 000)\n"
-        << "\t(b) Zahl suchen\n"
+        cout << "\t----- Menu -----\n"
+        << "\t(a) Zahl suchen\n"
         << "\t(q) Program beenden\n   >> ";
         cin >> choice;
 		
         switch (choice) {
             case 'A':
             case 'a':
-                cout << "\t>> ";
-                cin >> num_rands;
-                if (num_rands > max) {
-                    cout << "Zu viel, " << max << " Elemente gewaehlt\n";
-                    num_rands = max;
-                }
-				break;
-				
-            case 'B':
-            case 'b':
-                search_number(nums, num_rands);
+                search_number(nums, arr, num_rands);
                 break;
 			            
             case 'Q':
@@ -55,8 +46,10 @@ main(void)
 		
     } while (choice != 'q' && choice != 'Q');
     
+    
     destroy(nums);
     delete nums;
+    delete [] arr;
     
     return 0;
     
@@ -66,10 +59,10 @@ main(void)
  * Ask user for number to search.
  */
 void
-search_number(tree *nums, int num_rands)
+search_number(tree *nums, long *arr, int num_rands)
 {
     long search, res_seq, res_bin;
-    long *arr = new long[num_rands]; // array for searching
+    
     
     /* Timing variables */
     double start_insert_tree,
@@ -81,11 +74,11 @@ search_number(tree *nums, int num_rands)
            start_seq_search,
            stop_seq_search = 0.0;
     
-    cout << "\n\tBitte die zu suchende Zahl eingeben: ";
+    cout << "Bitte die zu suchende Zahl eingeben: ";
     cin >> search;
     
     // Insert random numbers into tree:
-    cout << "Schritt 1/4: Zufallszahlen generieren und in Baum einfuegen\n";
+    cout << "\nSchritt 1/4: Zufallszahlen generieren und in Baum einfuegen\n";
     start_insert_tree = get_time();
     insert_rands(nums, num_rands); 
     stop_insert_tree = get_time();
@@ -111,8 +104,9 @@ search_number(tree *nums, int num_rands)
     // Results
     cout << "\n\tErgebnisse\n"
          << "\t-----------\n"
-         << "\tSchritt 1: " << stop_insert_tree - start_insert_tree  << " s\n"
-         << "\tSchritt 2: " << stop_insert_array - start_insert_array << " s\n"
-         << "\tSchritt 3: " << stop_seq_search - start_seq_search << " s. Gefunden an Stelle: " << res_seq << endl
-         << "\tSchritt 4: " << stop_bin_search - start_bin_search << " s. Gerunden an Stelle: " << res_bin << endl;
+         << "\tSchritt 1: " << stop_insert_tree - start_insert_tree  << "s\n"
+         << "\tSchritt 2: " << stop_insert_array - start_insert_array << "s\n"
+         << "\tSchritt 3: " << stop_seq_search - start_seq_search << "s. Gefunden an Stelle: " << res_seq << endl
+         << "\tSchritt 4: " << stop_bin_search - start_bin_search << "s. Gefunden an Stelle: " << res_bin << endl;
+    
 }

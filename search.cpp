@@ -15,7 +15,7 @@
  * Returns: Position of number in array if found, -1 if not.
  */
 int
-seq_search(long *arr, long num, int upper)
+seq_search(long arr[], long num, int upper)
 {
     for (int i=0; i<upper; i++) {
         if (arr[i] == num) {
@@ -31,7 +31,7 @@ seq_search(long *arr, long num, int upper)
  * Returns: Position of number in array if found, -1 if not.
  */
 int
-bin_search(long *arr, long num, int upper)
+bin_search(long arr[], long num, int upper)
 {
     int left, right, x;
     left = 0, right = upper;
