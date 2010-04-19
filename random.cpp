@@ -7,6 +7,7 @@
  *
  */
 
+#include <Windows.h>
 #include <stdlib.h>
 #include "random.h"
 
@@ -20,7 +21,7 @@
 void
 init_rand(void)
 {
-    arc4random_stir();
+    srand(GetTickCount());
 }
 
 /* get_rand: Return new random number
@@ -31,5 +32,5 @@ init_rand(void)
 int
 get_rand(int upper)
 {
-    return arc4random() % ((unsigned)upper + 1);
+    return rand() % upper; // :-(
 }

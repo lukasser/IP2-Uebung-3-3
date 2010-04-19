@@ -43,9 +43,6 @@ main(void)
     flatten(nums->root, arr, &n);
     stop_insert_array = get_time();
 
-    /*for (int j=0; j<num_rands; j++) {
-        cout << j  << ": " << arr[j] << endl;
-    }*/
     
     /*  Main Menu loop */
     do {
