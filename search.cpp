@@ -8,6 +8,8 @@
  */
 
 #include "search.h"
+#include <iostream>
+using namespace std;
 
 /* seq_search: sequential search for number in array
  *
@@ -15,10 +17,10 @@
  * Returns: Position of number in array if found, -1 if not.
  */
 int
-seq_search(long arr[], long num, int upper)
+seq_search(int arr[], int num, int upper)
 {
     for (int i=0; i<upper; i++) {
-        if (arr[i] == num) {
+        if (num == arr[i]) {
             return i;
         }
     }
@@ -31,7 +33,7 @@ seq_search(long arr[], long num, int upper)
  * Returns: Position of number in array if found, -1 if not.
  */
 int
-bin_search(long arr[], long num, int upper)
+bin_search(int arr[], int num, int upper)
 {
     int left, right, x;
     left = 0, right = upper;

@@ -7,10 +7,11 @@
  *
  */
 
-#include "random.h"
 #include <stdlib.h>
 #include <sys/time.h>
 #include <limits.h>
+#include "random.h"
+
 
 /* init_rand: Initialize the random number generator
  * 
@@ -29,7 +30,7 @@ init_rand(void)
     for (i=0; i<sizeof now; i++)
         seed = seed * (UCHAR_MAX + 2U) + p[i];
     
-    srandom(seed);
+    srand(seed);
 }
 
 /* get_rand: Return new random number
@@ -38,7 +39,7 @@ init_rand(void)
  * Returns: random number
  */
 long
-get_rand(void)
+get_rand(int upper)
 {
-    return random();
+    return rand() % upper;
 }

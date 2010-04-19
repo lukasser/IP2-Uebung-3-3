@@ -8,5 +8,5 @@
  */
 
 /* ---- API ---- */
-void init_rand();  // Initialize random number generator
-long get_rand();    // Return new random number
+void init_rand();   // Initialize random number generator
+long get_rand(int); // Return new random number

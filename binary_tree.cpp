@@ -9,7 +9,7 @@
 
 #include "binary_tree.h"
 #include "random.h"
-#include <stdlib.h>
+#include <iostream>
 
 /* Creation Functions */
 
@@ -19,7 +19,7 @@
  * Returns: Pointer to new node
  */
 node*
-make_node(long number)
+make_node(int number)
 {
     node *it = new node;
     
@@ -34,29 +34,28 @@ make_node(long number)
 
 /* insert: Insert number into tree
  *
- * Arguments: Pointer to tree, number to insert
+ * Arguments: Pointer to root node, number to insert
  * Returns: Nothing
  */
 void
-insert(tree *tree, long number)
+insert(tree *t, int number)
 {
-    if (tree->root == NULL)
-        tree->root = make_node(number);
-    else {
-        node *it = tree->root; 
+    if (t->root == NULL) {
+        t->root = make_node(number);
+    } else {
+        node *it = t->root;
         int dir;
         
         for (;;) {
-            dir = it->number < number; // which direction?
-            
-            if (it->link[dir] == NULL) // we've reached a leaf
+            dir = it->number < number;
+            if (it->link[dir] == NULL)
                 break;
-
-            it = it->link[dir]; // link to the node we want to insert the data
+            it = it->link[dir];
         }
         
         it->link[dir] = make_node(number);
     }
+    
 }
 
 /* insert_rands: Insert N random numbers into tree
@@ -67,29 +66,30 @@ insert(tree *tree, long number)
 void
 insert_rands(tree *tree, int num)
 {
-    init_rand();
     int random_num;
+    init_rand();
+    
     for (int i=0; i<num; i++) {
-        random_num = get_rand()%num; // get new random number and cast out num
+        random_num = get_rand(num); // get new random number [0..num)
         insert(tree, random_num);
     }
 }
 
 /* Traversal Functions */
 
-/* inorder: Traverse tree in-order
+/* flatten: Traverse tree in-order
  *
  * Arguments: Pointer to root node, pointer to array for number storage
  * Returns: Nothing
  */
 void
-inorder(node *root, long *arr)
-{
+flatten(node *root, int arr[], int *i)
+{    
     if (root != NULL) {
-        inorder(root->link[0], arr);
-        *arr = root->number;
-        arr++;
-        inorder(root->link[1], arr);
+        flatten(root->link[0], arr, i);
+        arr[*i] = root->number;
+        *i = *i + 1;
+        flatten(root->link[1], arr, i);
     }
 }
 
