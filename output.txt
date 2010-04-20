@@ -1,0 +1,26 @@
+	----- Menu -----
+	(a) Zahl suchen
+	(q) Program beenden
+   >> 	Anzahl Elemente: 10000000
+Bitte die zu suchende Zahl eingeben: 
+	Ergebnisse
+	-----------
+	Zufallszahlen erzeugen & einfuegen: 21.047s
+	Zahlen ins Array kopieren: 1.79268s
+	Sequentielle Suche: 2.47955e-05s. Gefunden an Stelle: 12270
+	Binaere Suche: 7.15256e-06s. Gefunden an Stelle: 12271
+	----- Menu -----
+	(a) Zahl suchen
+	(q) Program beenden
+   >> 	Anzahl Elemente: 10000000
+Bitte die zu suchende Zahl eingeben: 
+	Ergebnisse
+	-----------
+	Zufallszahlen erzeugen & einfuegen: 21.047s
+	Zahlen ins Array kopieren: 1.79268s
+	Sequentielle Suche: 0.0175219s. Gefunden an Stelle: -1
+	Binaere Suche: 2.86102e-06s. Gefunden an Stelle: -1
+	----- Menu -----
+	(a) Zahl suchen
+	(q) Program beenden
+   >> 
