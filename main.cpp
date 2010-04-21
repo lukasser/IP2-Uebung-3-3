@@ -16,10 +16,11 @@ using namespace std;
 int 
 main(void)
 {
-    int num_rands = 10000000;
+    int num_rands = 100000;
     char choice;
     
     tree *nums = new tree;
+    nums->root = NULL;
     int  *arr = new int[num_rands]; // array for searching    
     int search, res_seq, res_bin, n=0;
     
